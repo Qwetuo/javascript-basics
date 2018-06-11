@@ -3,8 +3,11 @@ const assertEquals = require("./assert-helper");
 /* ---------------------- EXERCISE 1 ---------------------- */
 // Define a function that returns the sum of an array
 function sum(array) {
-
+    return array.reduce((a,b) => 
+    a + b
+    );
 }
+
 
 // Assertions (do not change)
 assertEquals(sum([1, 2]), 3);
@@ -12,9 +15,14 @@ assertEquals(sum([1, 2, 3, 4]), 10);
 
 /* ---------------------- EXERCISE 2 ---------------------- */
 // Define a function that returns an array of even numbers
-function evenNumbersOnly(array) {
 
+function evenNumbersOnly(array) {
+    const evenNum = array.filter(function (num) {
+    return num % 2 == 0
+    });
+    return evenNum;
 }
+
 
 // Assertions (do not change)
 assertEquals(evenNumbersOnly([1, 2, 3, 4]), [2, 4]);
@@ -24,7 +32,8 @@ assertEquals(evenNumbersOnly([10, 11, 12]), [10, 12]);
 // Define a function that returns the sum of even numbers in the array
 // hint: reuse the 2 functions that you defined earlier.
 function sumEvenNumbers(array) {
-
+    const a = evenNumbersOnly(array)
+    return sum(a);
 }
 
 // Assertions (do not change)
@@ -34,7 +43,9 @@ assertEquals(sumEvenNumbers([10, 11, 12]), 22);
 /* ---------------------- BONUS: EXERCISE 4 ---------------------- */
 // Write a Javascript function to compute the union of two arrays. the returned array should be sorted in ascending order (Sample input: union([1, 2, 3], [100, 2, 1, 10]), expected output: [1, 2, 3, 10, 100])
 function sortedUnion(arr1, arr2) {
-
+    return arr1.concat(arr2).sort(function(a,b) {
+        return a - b;
+    })
 }
 
 // Assertions (do not change)
